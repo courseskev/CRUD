@@ -1,10 +1,12 @@
 <?php 
-	$servername = "";
-	$username = "root";
-	$password = "";
+	$servername = "192.168.1.10";
+	#$username = "root";
+    $username = "clase";
+	$password = "12345678";
+    $dbname = "test";
 	
     try {
-        $connection = new PDO ("mysql_host = $servername; dbname = CHANGE", $username, $password);
+        $connection = new PDO ("mysql_host = $servername; dbname = $dbname", $username, $password);
         $connection->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
         echo "Succesfully connection";
 

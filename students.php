@@ -2,7 +2,8 @@
     require("db_connection.php");
 ?>
 
-<table>
+<a href="newStudent.php">Agregar Estudiante</a>
+<table border = "1" cellpadding = "5">
     <thead>
         <tr>
             <th>#</th>
@@ -12,7 +13,9 @@
             <th>Edad</th>
         </tr>
     </thead>
-</table>
+    <tbody>
+
+
 
 <?php
     $sql = "SELECT * FROM student";
@@ -35,6 +38,9 @@
             $i++;
         }
     }else{
-        echo
+        echo "<tr><td colspan = '5'> No se encontraron resultados</td></tr>";
     }
 ?>
+
+    </tbody>
+</table>
