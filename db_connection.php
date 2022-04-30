@@ -1,14 +1,14 @@
-<?php 
-	$servername = "192.168.1.10";
-	#$username = "root";
-    $username = "clase";
+<?php 	
+    $servername = "localhost";
+    $username = "other";
 	$password = "12345678";
     $dbname = "test";
 	
     try {
-        $connection = new PDO ("mysql_host = $servername; dbname = $dbname", $username, $password);
+        $dsn = 'mysql:host=192.168.1.23; dbname = test';
+        $connection = new PDO ($dsn, $username, $password);
         $connection->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
-        echo "Succesfully connection";
+        echo "Succesfully connection <br><br><br>";
 
     } catch (PDOException $e) {
         echo "Connection Failed: " . $e->getMessage();

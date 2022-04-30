@@ -15,10 +15,8 @@
     </thead>
     <tbody>
 
-
-
 <?php
-    $sql = "SELECT * FROM student";
+    $sql = "SELECT name, address, gender, age  FROM test.student";
     $respuesta = $connection->prepare($sql);
     $respuesta->execute();
 
@@ -27,11 +25,11 @@
         while($row = $respuesta->fetch(PDO::FETCH_ASSOC)){
             echo 
                 "<tr>
-                    <td>" .$i "</td>
-                    <td>" .$row['name'] "</td>
-                    <td>" .$row['address'] "</td>
-                    <td>" .$row['gender'] "</td>
-                    <td>" .$row['course'] "</td>
+                    <td>" .$i. "</td>
+                    <td>" .$row['name']. "</td>
+                    <td>" .$row['address']. "</td>
+                    <td>" .$row['gender']. "</td>
+                    <td>" .$row['age']. "</td>
                 </tr>"
             ;
             

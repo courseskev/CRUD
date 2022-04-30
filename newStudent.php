@@ -1,33 +1,34 @@
 <?php
     if(isset($_POST["btnGuardar"])){
         $name = $_POST["txtNombre"];
-        $address = $_POST["txtDireccion"];
-        $gender = $_POST["cboGenero"];
-        $age = $_POST["txtEdad"];
+        $estado = $_POST["txtEstado"];
+        $nit = $_POST["txtNIT"];
+        $precio = $_POST["txtPrecio"];
 
         require("db_connection.php");
-        $sql = "INSERT INTO student(name, address, gender, age) VALUES (:name, :address, :gender, :age);"
+        
+        $sql = "INSERT INTO proveedor(nombrerepresentelegal, estado, NIT, precio_ofertado) VALUES (:name, :address, :gender, :age)";
         $result = $connection->prepare($sql);
-        $values = array(":name" => $name, 
-                        ":address" => $address,
-                        ":gender" => $gender,
-                        ":age" => $age,);
+        $values = array(":nombrerepresentelegal" => $name, 
+                        ":estado" => $estado,
+                        ":NIT" => $nit,
+                        ":precio_ofertado" => $precio,);
         $result->excute($values);
 
         if($result->rowCount()>0){
             echo" 
                 <script>
-                    alert("Estudiante agregado con éxito");
-                    window.location = 'students.php'
+                    alert('Proveedor Agregado con éxito');
+                    window.location = 'newStudent.php';
                 </script>
-                "
+                ";
         }
         else{
             echo" 
                 <script>
-                    alert(" Error al guardar al Estudiante");                    
+                    alert(' Error al guardar al provededor');                    
                 </script>
-                "
+                ";
         }
     }
 ?>
@@ -35,36 +36,32 @@
 
 <html>
     <head>
-        <title>Agregar estudiante</title>
+        <title>Agregar Proveedor</title>
     </head>
     
     <body>
-        <form action="newStudent.php" method="post">
+        <form action="actualizarProveedor.php" method="post">
             <table align= "center" cellpadding="5">
                 <tr>
-                    <td colspan="3">Agregar un nuevo estudiante </td>                    
+                    <td colspan="3">Agregar proveedor </td>                    
                 </tr>
                 <tr>
-                    <td>Nombre: </td>
+                    <td>Representante: </td>
                     <td><input type="text" name="txtNombre"></td>
                 </tr>
                 <tr>
-                    <td>Dirección: </td>
-                    <td><input type="text" name="txtDireccion"></td>
+                    <td>Estado: </td>
+                    <td><input type="text" name="txtEstado"></td>
                 </tr>
-                <tr>
-                    <td>Género: </td>
+                <tr>                    
                     <td>
-                        <select name="cboGenero" id="">
-                            <option value="">Seleccione</option>
-                            <option value="1">Hombre</option>
-                            <option value="2">Mujer</option>
-                        </select>
+                        <td>NIT: </td>
+                        <td><input type="text" name="txtNIT"></td>
                     </td>
                 </tr>
                 <tr>
-                    <td>Edad: </td>
-                    <td><input type="text" name="txtEdad"></td>
+                    <td>Precio: </td>
+                    <td><input type="text" name="txtPrecio"></td>
                 </tr>
                 <tr>
                     <td colspan = "2"><input type="Submit" value="Guardar" name="btnGuardar"> </td>
